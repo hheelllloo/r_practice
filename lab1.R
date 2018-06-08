@@ -37,3 +37,4 @@ mydf[7:11,]
 surveydata = read.table("lab1.surveydata.txt", header=T, as.is=T, sep="\t")
 head(surveydata)
 length(which(surveydata$sex=="M"))
+2 * 3
