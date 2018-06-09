@@ -37,4 +37,10 @@ colmin = function(dataframe, col) {
 }
 colmin(surveydata, 1)
 hist(surveydata$height_inches, col="red", xlim=c(48, 99), main="heights in inches", xlab="inches")
-boxplot(surveydata$height_inches[which(surveydata$sex=="F")], surveydata$height_inches[which(surveydata$sex=="M")])
+values = boxplot(surveydata$height_inches[which(surveydata$sex=="F")], surveydata$height_inches[which(surveydata$sex=="M")], names=c("F", "M"), ylab="heights")
+medians = values$stats[3,]
+par(mfrow=c(1,2))
+dev.off()
+plot(surveydata$height_inches, surveydata$shoe_size_european, xlab="height in inches", ylab="shoe size", main="height vs shoe size", type="n")
+points(surveydata$height_inches[which(surveydata$sex=='M')], surveydata$shoe_size_european[which(surveydata$sex=="M")], pch="m")
+points(surveydata$height_inches[which(surveydata$sex=="F")], surveydata$shoe_size_european[which(surveydata$sex=="F")], pch="f")
