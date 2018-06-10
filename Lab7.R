@@ -1,0 +1,32 @@
+rm(list=ls())
+voles = read.table("VasopressinVoles.txt", header=T)
+head(voles)
+boxplot(voles$percent[which(voles$treatment=="control")], voles$percent[which(voles$treatment!="control")])
+myCI(voles$percent[which(voles$treatment=="enhanced")], "mu", 0.99)
+myCI(voles$percent[which(voles$treatment=="control")], "mu", 0.99)
+sd(voles$percent[which(voles$treatment=="enhanced")])
+sd(voles$percent[which(voles$treatment=="control")])
+1 - pt(.1*7/.35, 48)
+onesample_ttest(15.9, 0.35, 49, alternative = "less", mu=16)
+qt(0.05, 48)
+onesample_ttest(15.9, 0.35, 49, mu=16)
+survey = read.table("lab1.surveydata.txt", header=T, sep="\t")
+myCI(survey$height_inches[which(survey$sex=="M")], "mu", 0.95)
+t.test(survey$height_inches[which(survey$sex=="M")], mu=70, conf.level = 0.95)
+finches = read.table("KenyaFinches.txt", header=T, sep="\t")
+head(finches)
+xbar = mean(finches$beaklength.mm)
+ybar = mean(finches$mass.g)
+sst = sum((finches$mass.g - ybar)^2)
+xvars = finches$beaklength.mm - xbar
+yvars = finches$mass.g - ybar
+b = sum(xvars * yvars)/sum(xvars^2)
+a = ybar - b*xbar
+ssr = (sum(xvars * yvars))^2/sum(xvars^2)
+sse = sst - ssr
+sb = sqrt(sse/(45-2)/sum(xvars^2))
+line = lm(finches$mass.g~finches$beaklength.mm)
+summary(line)
+ssr/sst
+plot(finches$beaklength.mm, finches$mass.g, pch=19)
+abline(line$coefficients)

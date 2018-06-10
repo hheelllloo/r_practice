@@ -25,8 +25,8 @@ print(paste("Cannot calculate a", confidencelevel*100, "% confidence interval.")
 		return()
 	}
 	myinterval = c(lowerlimit, upperlimit)
-	print(paste("The", confidencelevel*100, "% confidence interval for", parameter, "is:"))
-	print(myinterval)	
+	#print(paste("The", confidencelevel*100, "% confidence interval for", parameter, "is:"))
+	return(myinterval)	
 }
 
 myCI(flash, "mu", 5)
