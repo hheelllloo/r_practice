@@ -1,0 +1,4 @@
+3 hello MA
+4 2 MA
+5* 4 MA
+6 5 RI
